@@ -336,7 +336,89 @@ z := "Hello World"
 				</section>
 
 				<section>
-					<h2>Function</h2>
+					<section>
+						<h2>Function</h2>
+					</section>
+
+					<section data-markdown>
+						<h2>Normal</h2>
+```
+func average(scores []float64) (float64) {
+	total := 0.0
+	for _, value := range scores {
+		total += value
+	}
+	return total / float64(len(scores))
+}
+```
+					</section>
+
+					<section data-markdown>
+						<h2>多個input參數</h2>
+```
+func add(arguments ...int) int {
+	total := 0
+	for _, value := range arguments {
+		total += value
+	}
+	return total
+}
+```
+
+					</section>
+
+					<section data-markdown>
+						<h2>Generator</h2>
+```
+func makeEvenGenerator() func() uint {
+	i := uint(0)
+	fmt.Println("this only be called once")
+	return func() (ret uint) {
+		ret = i
+		i += 2
+		return
+	}
+}
+```
+
+					</section>
+
+					<section data-markdown>
+						<h2>遞迴</h2>
+```
+func factorial(x uint) uint {
+	if x == 0 {
+		return 1
+	}
+	return x * factorial(x-1)
+}
+```
+
+					</section>
+
+					<section data-markdown>
+						<h2>defer</h2>
+```
+func first() {
+	fmt.Println("first")
+}
+
+func second() {
+	fmt.Println("second")
+}
+
+func main() {
+	defer first()
+	second()
+}
+
+//output:
+//second
+//first
+
+
+```
+					</section>
 
 				</section>
 <!--				<section>

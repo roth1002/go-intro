@@ -41,88 +41,305 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+					<h1>Go</h1>
+					<h3>Introduce the Go Programming Language</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>Created by <a href="http://github.com/roth1002">Roth</a> / <a href="http://twitter.com/roth1002">@彭煜釗</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+					<h2>Go 語言的世界</h2>
+					<p class="fragment">
+						宏觀, 安裝, 配置, 工程命令, 標準命令, 語法
 					</p>
 				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
+						<h2>Go的語言特性</h2>
+						<!--<p>Use the <em>Space</em> key to navigate through all slides.</p>
 						<br>
 						<a href="#" class="navigate-down">
 							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						</a>-->
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<h2>開源</h2>
+						<p class="fragment">意味著版本與開發速度上的快速, 回顧看看C/C++ JAVA的歷史, 他們起初就不是開源</p>
 					</section>
-					<section>
+					<!--<section>
 						<h2>Basement Level 2</h2>
 						<p>That's it, time to go back up.</p>
 						<br>
 						<a href="#/2">
 							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
 						</a>
+					</section>-->
+					<section>
+						<h2>靚態 編譯型語言</h2>
+						<p class="fragment">降低直譯式語言所需要的型別檢查成本</p>
+					</section>
+
+					<section>
+						<h2>跨平台？</h2>
+						<p class="fragment">其實叫做跨平台支援......</p>
+					</section>
+
+					<section>
+						<h2>Garbage Collection</h2>
+						<p class="fragment">自動, 甚至允許手動</p>
+					</section>
+
+					<section>
+						<h2>併發 Concurrency</h2>
+						<p class="fragment">可以先理解成比C語言的pthread輕量幾十倍的執行緒</p>
+						<p class="fragment">goroutine, channel(後面會提）</p>
+					</section>
+
+					<section>
+						<h2>物件導向？函數編程？</h2>
+						<p class="fragment">同時具備 物件導向 函數編程</p>
+					</section>
+
+					<section>
+						<h2>物件導向</h2>
+						<p class="fragment">無繼承層次的輕量級物件導向</p>
+						<p class="fragment">非侵入式接口（利於測試）</p>
+					</section>
+
+					<section>
+						<h2>函數編程</h2>
+						<p class="fragment">函數類型叫做第一等類性（後面會說明）</p>
+						<p class="fragment">惰性求值</p>
+					</section>
+
+					<section>
+						<h2>Unication of Coding Style</h2>
+						<p></p>
 					</section>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
+					<section>
+						<h2>優點</h2>
+						<p></p>
+					</section>
+
+					<section>
+						<h2>Compare with C/C++?</h2>
+						<p class="fragment">依賴管理明確</p>
+						<p class="fragment">gc的能力使你不用過度干涉記憶體管理  大幅降低原始碼長度  開發效率提高</p>
+					</section>
+
+					<section>
+						<h2>Compare with Java?</h2>
+						<p class="fragment">還要我說嗎？（去用Scala吧）</p>
+					</section>
+
+					<section>
+						<h2>Compare with php?</h2>
+						<p class="fragment">我看$不爽可以吧XD</p>
+					</section>
+
+					<section>
+						<h2>Compare with python/ruby?</h2>
+						<p class="fragment">效能</p>
+					</section>
+
+
 				</section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+					<section>
+						<h2>缺點</h2>
+						<p></p>
+					</section>
+
+					<section>
+						<h2>Compare with C/C++?</h2>
+						<p>運行速度還不及</p>
+					</section>
+
+					<section>
+						<h2>第三方函式庫的數量較少</h2>
+						<h2 class="fragment">不支援自已定義的泛型類型</h2>
+						<h2 class="fragment">併發其實有潛規則要遵守</h2>
+						<p class="fragment">不然等著創造坑自己踩進去吧</p>
+						<h2 class="fragment">垃圾回收的改進</h2>
+					</section>
+
 				</section>
 
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
+				<section  data-markdown>
+					<h2>Hello World</h2>
+					<pre><code>
+```
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Printf("Hello World!\n")
+}
+```
+					</code></pre>
+
+				</section>
+				<section  data-markdown>
+					<h2>變數宣告</h2>
+```
+var x string = "Hello World"
+
+var y string
+y = "Hello World"
+
+z := "Hello World"
+```
 				</section>
 
 				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+					<h2>流程控制<h2>
+```
+	// for
+	i := 1
+	for i <= 10 {
+		fmt.Println(i)
+		i = i + 1
+	}
 
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+	// also for
+	for i := 1; i <= 10; i++ {
+		fmt.Println(i)
+	}
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+	// add if
+	for i := 1; i <= 10; i++ {
+		if i%2 == 0 {
+			fmt.Println(i, "even")
+		} else {
+			fmt.Println(i, "odd")
+		}
+	}
 
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
+	// switch
+	switch i {
+	case 0:
+		fmt.Println("Zero")
+	case 1:
+		fmt.Println("One")
+```
+
+
+				</section>
+				<section data-markdown>
+					<h2>陣列</h2>
+```
+	// int array
+	var x [5]int
+	x[4] = 100
+	fmt.Println(x) //auto fill 0 with non-assignment
+
+	// go through array
+	var y [5]float64
+	y[0] = 98
+	y[1] = 93
+	y[2] = 77
+	y[3] = 82
+	y[4] = 83
+	var total float64 = 0
+	for i := 0; i < len(y); i++ {
+		total += y[i]
+	}
+	fmt.Println("Total =", total)
+	fmt.Println("Average =", total/float64(len(y))) //Mind len(y) is int
+
+	// slice不固定大小的陣列( have append copy function....etc)
+	z := make([]float64, 4, 10)
+	fmt.Println(z)
+
+	fmt.Println(y[1:4]) // same as python
+
+	//append
+	fmt.Println(append(z, 100, 200, 300, 400, 555, 666, 777, 888))
+
+	// Map, need memory malloc by using make
+	elements := make(map[string]string)
+	elements["H"] = "Hydrogen"
+	elements["He"] = "Helium"
+	elements["Li"] = "Lithium"
+	elements["Be"] = "Beryllium"
+	elements["B"] = "Boron"
+	elements["C"] = "Carbon"
+	elements["N"] = "Nitrogen"
+	elements["O"] = "Oxygen"
+	elements["F"] = "Fluorine"
+	elements["Ne"] = "Neon"
+
+	fmt.Println(elements["Li"])
+	fmt.Println(elements)
+
+	// add if
+	name, ok := elements["Li"]
+	fmt.Println(name, ok)
+
+	// Map in Map
+	people := map[string]map[string]string{
+		"H": map[string]string{
+			"name":  "Hydrogen",
+			"state": "gas",
+		},
+		"He": map[string]string{
+			"name":  "Helium",
+			"state": "gas",
+		},
+		"Li": map[string]string{
+			"name":  "Lithium",
+			"state": "solid",
+		},
+		"Be": map[string]string{
+			"name":  "Beryllium",
+			"state": "solid",
+		},
+		"B": map[string]string{
+			"name":  "Boron",
+			"state": "solid",
+		},
+		"C": map[string]string{
+			"name":  "Carbon",
+			"state": "solid",
+		},
+		"N": map[string]string{
+			"name":  "Nitrogen",
+			"state": "gas",
+		},
+		"O": map[string]string{
+			"name":  "Oxygen",
+			"state": "gas",
+		},
+		"F": map[string]string{
+			"name":  "Fluorine",
+			"state": "gas",
+		},
+		"Ne": map[string]string{
+			"name":  "Neon",
+			"state": "gas",
+		},
+	}
+
+	if el, ok := people["Li"]; ok {
+		fmt.Println(el["name"], el["state"])
+		fmt.Println(el)
+```
+
 				</section>
 
 				<section>
+					<h2>Function</h2>
+
+				</section>
+<!--				<section>
 					<section id="fragments">
 						<h2>Fragments</h2>
 						<p>Hit the next arrow...</p>
@@ -162,7 +379,6 @@
 					<h2>Themes</h2>
 					<p>
 						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
@@ -220,27 +436,6 @@
 						You can override background transitions per-slide.
 					</p>
 					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
 
 				<section>
@@ -374,7 +569,7 @@ Reveal.addEventListener( 'customevent', function() {
 						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
 					</p>
 				</section>
-
+-->
 			</div>
 
 		</div>

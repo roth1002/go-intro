@@ -39,24 +39,20 @@
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Go</h1>
-					<h3>Introduce the Go Programming Language</h3>
-					<p>
-						<small>Created by <a href="http://github.com/roth1002">Roth</a> / <a href="http://twitter.com/roth1002">@彭煜釗</a></small>
-					</p>
+			<div class="slides" >
+				<section data-markdown="slides/title.markdown" data-background="turquoise">
 				</section>
 
-				<section>
+				<section data-background="turquoise">
 					<h2>Go 語言的世界</h2>
 					<p class="fragment">
 						宏觀, 安裝, 配置, 工程命令, 標準命令, 語法
 					</p>
+					<img class="fragment" src="http://www.unixstickers.com/image/cache/data/stickers/golang/golang.sh-600x600.png">
 				</section>
 
 				<!-- Example of nested vertical slides -->
-				<section>
+				<section data-background="turquoise">
 					<section>
 						<h2>Go的語言特性</h2>
 						<!--<p>Use the <em>Space</em> key to navigate through all slides.</p>
@@ -78,7 +74,7 @@
 						</a>
 					</section>-->
 					<section>
-						<h2>靚態 編譯型語言</h2>
+						<h2>靜態 編譯型語言</h2>
 						<p class="fragment">降低直譯式語言所需要的型別檢查成本</p>
 					</section>
 
@@ -121,7 +117,7 @@
 					</section>
 				</section>
 
-				<section>
+				<section data-background="turquoise">
 					<section>
 						<h2>優點</h2>
 						<p></p>
@@ -151,7 +147,7 @@
 
 				</section>
 
-				<section>
+				<section data-background="turquoise">
 					<section>
 						<h2>缺點</h2>
 						<p></p>
@@ -172,7 +168,7 @@
 
 				</section>
 
-				<section  data-markdown>
+				<section data-background="turquoise" data-markdown>
 					<h2>Hello World</h2>
 					<pre><code>
 ```
@@ -187,7 +183,7 @@ func main() {
 					</code></pre>
 
 				</section>
-				<section  data-markdown>
+				<section data-background="turquoise" data-markdown>
 					<h2>變數宣告</h2>
 ```
 var x string = "Hello World"
@@ -199,7 +195,7 @@ z := "Hello World"
 ```
 				</section>
 
-				<section data-markdown>
+				<section data-background="turquoise" data-markdown>
 					<h2>流程控制<h2>
 ```
 	// for
@@ -233,7 +229,7 @@ z := "Hello World"
 
 
 				</section>
-				<section data-markdown>
+				<section data-background="turquoise" data-markdown>
 					<h2>陣列</h2>
 ```
 	// int array
@@ -335,7 +331,7 @@ z := "Hello World"
 
 				</section>
 
-				<section>
+				<section data-background="turquoise">
 					<section>
 						<h2>Function</h2>
 					</section>
@@ -418,6 +414,199 @@ func main() {
 
 
 ```
+					</section>
+
+				</section>
+
+				<section data-background="turquoise">
+					<section data-markdown>
+						<h2>指標</h2>
+					</section>
+
+					<section data-markdown>
+						<h2>傳參數</h2>
+```
+func zero(x int) {
+	x = 0
+}
+
+func main() {
+	x := 5
+	zero(x)
+	fmt.Println(x) // x is still 5
+}
+
+```
+					</section>
+
+					<section data-markdown>
+						<h2>傳參考</h2>
+```
+func zeroByRef(xPtr *int) {
+	*xPtr = 0
+}
+
+func main() {
+	x := 5
+	zeroByRef(&x)
+	fmt.Println(x) // x change to 0
+}
+
+```
+					</section>
+
+					<section data-markdown>
+						<h2>傳指標變數</h2>
+```
+func two(xPtr *int) {
+	*xPtr = 2
+}
+
+func main() {
+	xPtr := new(int)
+	two(xPtr)
+	fmt.Println(*xPtr) //xPtr is 2
+}
+```
+					</section>
+
+					<section data-markdown>
+						<h2>交換變數的例子</h2>
+```
+func swap(x *int, y *int) {
+	zPtr := new(int)
+	*zPtr = *x
+	*x = *y
+	*y = *zPtr
+}
+
+func main() {
+	var (
+		a = 2
+		b = 1
+	)
+	swap(&a, &b)
+	fmt.Println("a =", a, "b =", b)
+}
+```
+						Go千萬不要這樣實作
+					</section>
+
+					<section data-markdown>
+						<h2>Go的變數參考可以略過那個tmp</h2>
+```
+func main() {
+	var (
+		a = 2
+		b = 1
+	)
+	a, b = b, a
+	fmt.Println("a =", a, "b =", b)
+}
+```
+
+					</section>
+				</section>
+
+				<section data-background="turquoise">
+					<section data-markdown>
+						<h2>Concurrency</h2>
+					</section>
+
+					<section data-markdown>
+						<h2>Goroutine</h2>
+
+```
+func f(n int) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(n, ":", i)
+		amt := time.Duration(rand.Intn(250))
+		time.Sleep(time.Millisecond * amt)
+	}
+}
+
+func main() {
+	for i := 0; i < 10; i++ {
+		go f(i)
+	}
+	var input string
+	fmt.Scanln(&input)
+}
+
+```
+					</section>
+					<section data-markdown>
+						<h2>Goroutine IPC with channel</h2>
+```
+func tim(tim chan<- string) { // 傳入channal 然後一直將 "tim" send進去 tim這個channal
+	for i := 1; ; i++ { // go's while ( true ) in C lang
+		tim <- "tim"
+	}
+}
+
+func randy(randy chan<- string) { //可以將傳入方向放在argument宣告  方便讀懂code  如果是雙向都要的時候就不指定方向
+	for i := 0; ; i++ {
+		randy <- "randy"
+	}
+}
+
+func receiveChannalAndPrint(leo <-chan string) { // 傳入 channal 然後每秒接收channal的內容
+	for { // another go's while ( true ) in C lang
+		msg := <-leo
+		fmt.Println(msg)
+		time.Sleep(time.Second * 1)
+	}
+}
+
+func main() {
+	var c chan string = make(chan string)
+	go tim(c) //相當於發起thread
+	go randy(c)
+	go receiveChannalAndPrint(c)
+	var input string
+	fmt.Scanln(&input) //故意讓主程式停住
+}
+
+```
+					</section>
+
+					<section data-markdown>
+						<h2>Goroutine with Bufferd channel</h2>
+```
+	chan1 := make(chan string, 10)
+	chan2 := make(chan string, 10)
+
+	go func() {
+		for {
+			chan1 <- "from tim"
+			time.Sleep(time.Second * 1)
+		}
+	}() //很像Javascript吧XD
+
+	go func() {
+		for {
+			chan2 <- "from randy"
+			time.Sleep(time.Second * 1)
+		}
+	}()
+
+	go func() {
+		for {
+			select {
+			case msg1 := <-chan1:
+				fmt.Println("message 1", msg1)
+			case msg2 := <-chan2:
+				fmt.Println("message 2", msg2)
+			case <-time.After(time.Second):
+				fmt.Println("timeout")
+			default:
+				fmt.Println("nothing")
+				time.Sleep(time.Second * 1)
+			}
+		}
+	}()
+```
+
 					</section>
 
 				</section>

@@ -44,11 +44,17 @@
 				</section>
 
 				<section data-background="turquoise">
-					<h2>Go 語言的世界</h2>
-					<p class="fragment">
-						宏觀, 安裝, 配置, 工程命令, 標準命令, 語法
-					</p>
-					<img class="fragment" src="http://www.unixstickers.com/image/cache/data/stickers/golang/golang.sh-600x600.png">
+					<section>
+						<h2>Go 語言的世界</h2>
+						<p class="fragment">
+							宏觀, 安裝, 配置, 工程命令, 標準命令, 語法
+						</p>
+						<img class="fragment" src="http://www.unixstickers.com/image/cache/data/stickers/golang/golang.sh-600x600.png">
+					</section>
+					<section>
+						<h2>開放設計Logo</h2>
+						<img class="fragment" src="https://raw.githubusercontent.com/parnurzeal/gorequest/gh-pages/images/Gopher_GoRequest_600x400.jpg">
+						</section>
 				</section>
 
 				<!-- Example of nested vertical slides -->
@@ -419,7 +425,7 @@ func main() {
 				</section>
 
 				<section data-background="turquoise">
-					<section data-markdown>
+					<section>
 						<h2>指標</h2>
 					</section>
 
@@ -509,7 +515,7 @@ func main() {
 				</section>
 
 				<section data-background="turquoise">
-					<section data-markdown>
+					<section>
 						<h2>Concurrency</h2>
 					</section>
 
@@ -608,6 +614,236 @@ func main() {
 ```
 
 					</section>
+
+				</section>
+				<section data-background="turquoise">
+					<section>
+						<h2>Package</h2>
+						<p class="fragment">使用自定義/內建/第三方函式庫</p>
+						<p class="fragment">使用自己的要注意目錄結構（除非你另外放在github上import)</p>
+					</section>
+					<section data-markdown>
+						<h2>package math</h2>
+```
+package math
+
+// Finds the average of a series of numbers
+func Average(xs []float64) float64 {
+	total := float64(0)
+	for _, x := range xs {
+		total += x
+	}
+	return total / float64(len(xs))
+}
+```
+					</section>
+					<section data-markdown>
+						<h2>package main</h2>
+```
+package main
+
+import (
+	"./math"
+	"fmt"
+)
+
+func main() {
+	xs := []float64{1, 2, 3, 4}
+	avg := math.Average(xs)
+	fmt.Println(avg)
+}
+
+```
+					</section>
+
+				</section>
+
+				<section data-background="turquoise">
+					<section>
+						<h2>測試</h2>
+						<p class="fragment">沒有繼承問題</p>
+						<p class="fragment">沒有侵入式接口問題</p>
+						<p class="fragment">沒有非同步無法測試的問題（Javascript有實做一些方式幫助你處理）</p>
+						<p class="fragment">方式你可能覺得跟Javascript超像</p>
+						<p class="fragment">沒錯!! 因為它帶了Javascript的優良部份過來</p>
+					</section>
+					<section>
+						<h2>Google提供的內建測試包 testing</h2>
+						<p class="fragment">說實在我沒有很喜歡XD</p>
+						<p class="fragment">因為不太直觀</p>
+					</section>
+					<section data-markdown>
+						<h2>average.go</h2>
+```
+
+package math
+
+// Finds the average of a series of numbers
+func Average(xs []float64) float64 {
+	total := float64(0)
+	for _, x := range xs {
+		total += x
+	}
+	return total / float64(len(xs))
+}
+
+
+```
+					</section>
+					<section data-markdown>
+						<h2>average_test.go</h2>
+```
+
+package math
+
+import "testing"
+
+type testpair struct {
+	values  []float64
+	average float64
+}
+
+var tests = []testpair{
+	{[]float64{1, 2}, 1.5},
+	{[]float64{1, 1, 1, 1, 1, 1}, 1},
+	{[]float64{-1, 1}, 0},
+}
+
+func TestAverage(t *testing.T) {
+	for _, pair := range tests {
+		v := Average(pair.values)
+		if v != pair.average {
+			t.Error(
+				"For", pair.values,
+				"expected", pair.average,
+				"got", v,
+			)
+		}
+	}
+}
+
+```
+					</section>
+					<section>
+						<h2>Open Source的好處來了</h2>
+						<p class="fragment">跳坑玩家提供</p>
+						<a class="fragment" href="https://github.com/stretchr/testify">https://github.com/stretchr/testify</a>
+					</section>
+					<section data-markdown>
+						<h2>add.go</h2>
+```
+
+package math
+
+// Finds the sum of a series of numbers
+func Add(xs []float64) float64 {
+	total := float64(0)
+	for _, x := range xs {
+		total += x
+	}
+	return total
+}
+
+```
+					</section>
+					<section data-markdown>
+						<h2>add_test.go</h2>
+```
+
+package math
+
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
+
+type addtestpair struct {
+	values []float64
+	sum    float64
+}
+
+var addtests = []addtestpair{
+	{[]float64{1, 2}, 3},
+	{[]float64{1, 1, 1, 1, 1, 1}, 6},
+	{[]float64{-1, 1}, 0},
+	{[]float64{1.1, 2.3}, 3.4},
+}
+
+func TestAdd(t *testing.T) {
+	for _, pair := range addtests {
+		v := Add(pair.values)
+		assert.Equal(t, v, pair.sum, "they should be equal")
+	}
+}
+
+```
+					</section>
+				</section>
+
+				<section data-background="turquoise">
+					<section>
+						<h2>上次Google的朋友來提到的字串相加</h2>
+						<p class="fragment">就照著Google提供的規範走吧</p>
+					</section>
+					<section data-markdown>
+```
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	fmt.Println(
+		// true
+		strings.Contains("test", "es"),
+
+		// 2
+		strings.Count("test", "t"),
+
+		// true
+		strings.HasPrefix("test", "te"),
+
+		// true
+		strings.HasSuffix("test", "st"),
+
+		// 1
+		strings.Index("test", "e"),
+
+		// "a-b"
+		strings.Join([]string{"a", "b"}, "-"),
+
+		// == "aaaaa"
+		strings.Repeat("a", 5),
+
+		// "bbaa"
+		strings.Replace("aaaa", "a", "b", 2),
+
+		// []string{"a","b","c","d","e"}
+		strings.Split("a-b-c-d-e", "-"),
+
+		// "test"
+		strings.ToLower("TEST"),
+
+		// "TEST"
+		strings.ToUpper("test"),
+	)
+}
+
+```
+					</section>
+
+				</section>
+
+
+
+
+
+
+				<section>
+					<h1>End</h1>
 
 				</section>
 <!--				<section>
